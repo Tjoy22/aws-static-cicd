@@ -29,4 +29,9 @@ jobs:
       - name: Upload files to S3
         run: |
           aws s3 cp . s3://project2.more4less.art/ --recursive
+          - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: E10OXKT9BIPKM8
+          PATHS: "/*"
 
